@@ -172,8 +172,8 @@ impl TryFrom<&[u8]> for LegacyTransaction {
         let lock_time = u32::from_le_bytes([data[12], data[13], data[14], data[15]]);
 
         // Create vectors with reserved capacity
-        let mut inputs = Vec::with_capacity(inputs_count as usize);
-        let mut outputs = Vec::with_capacity(outputs_count as usize);
+        let inputs = Vec::with_capacity(inputs_count as usize);
+        let outputs = Vec::with_capacity(outputs_count as usize);
 
         Ok(LegacyTransaction {
             version,
@@ -198,4 +198,3 @@ impl BitcoinSerialize for LegacyTransaction {
         result
     }
 }
-
